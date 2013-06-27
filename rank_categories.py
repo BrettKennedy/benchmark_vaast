@@ -23,9 +23,8 @@ f = open(args.ranks,'r')
 for line in f:
     data = re.split("\s+",line.strip())
     if data[1] not in genes:
-        print data[1]
-        print "not in genes"
-    if genes[data[1]] == 0:
+        print data[1] + "not in genes"
+    elif genes[data[1]] == 0:
         genes[data[1]] = 1
         if int(data[0]) <= 10:
             less_10+=1
@@ -35,6 +34,8 @@ for line in f:
             less_1000+=1
         else:
             more+=1
+    else:
+    	print "this gene was already found: " + data[1]
            
 f.close()
 
